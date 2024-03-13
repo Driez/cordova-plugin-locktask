@@ -22,8 +22,10 @@ cordova plugin add https://github.com/oddmouse/cordova-plugin-locktask.git
 
 - **className:** [String optional] - DeviceAdminReceiver subclass name if device owner is enabled
 
+- **whitelist:** [String[] optional] - additional package names to whitelist for use in locktask mode
+
 ```js
-window.plugins.locktask.startLockTask(successCallback, errorCallback, className);
+window.plugins.locktask.startLockTask(successCallback, errorCallback, className, whitelist);
 ```
 
 ### stopLockTask
