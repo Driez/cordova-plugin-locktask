@@ -9,6 +9,6 @@ module.exports = {
     cordova.exec(successCallback, errorCallback, "LockTask", "startLockTask", [adminClassName, whitelist]);
   },
   stopLockTask: function (successCallback, errorCallback) {
-    cordova.exec(successCallback, errorCallback, "LockTask", "stopLockTask", []);
+    cordova.exec(successCallback, errorCallback, "LockTask", "stopLockTask", ['', []]);
   }
 };

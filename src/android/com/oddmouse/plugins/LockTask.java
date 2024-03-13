@@ -26,7 +26,7 @@ public class LockTask extends CordovaPlugin {
     String adminClassName = "";
 
     adminClassName = args.getString(0);
-    JSONArray whitelist = args.length() > 1 ? args.getJSONArray(1) : new JSONArray();
+    JSONArray whitelist = args.getJSONArray(1);
 
 
 
