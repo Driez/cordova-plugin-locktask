@@ -23,7 +23,6 @@ public class LockTask extends CordovaPlugin {
   private Activity activity = null;
   private WindowInsetsControllerCompat windowInsetsController;
 
-  private boolean immersive;
 
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -33,7 +32,7 @@ public class LockTask extends CordovaPlugin {
 
     adminClassName = args.getString(0);
     JSONArray whitelist = args.getJSONArray(1);
-    immersive = immersive || args.getBoolean(3);
+    boolean immersive = args.getBoolean(3);
 
     windowInsetsController = WindowCompat.getInsetsController(activity.getWindow(), activity.getWindow().getDecorView());
     windowInsetsController.setSystemBarsBehavior(
@@ -77,10 +76,7 @@ public class LockTask extends CordovaPlugin {
 
         if (activityManager.isInLockTaskMode()) {
           activity.stopLockTask();
-          if (immersive) {
-            windowInsetsController.show(WindowInsetsCompat.Type.systemBars());
-            immersive = false;
-          }
+          windowInsetsController.show(WindowInsetsCompat.Type.systemBars());
         }
 
         callbackContext.success();
