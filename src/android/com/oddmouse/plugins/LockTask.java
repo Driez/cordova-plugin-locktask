@@ -21,8 +21,8 @@ public class LockTask extends CordovaPlugin {
   private static final String ACTION_STOP_LOCK_TASK = "stopLockTask";
 
   private Activity activity = null;
-  private final WindowInsetsControllerCompat windowInsetsController =
-          WindowCompat.getInsetsController(activity.getWindow(), activity.getWindow().getDecorView());
+  private WindowInsetsControllerCompat windowInsetsController;
+
   private boolean immersive;
 
   @Override
@@ -34,6 +34,8 @@ public class LockTask extends CordovaPlugin {
     adminClassName = args.getString(0);
     JSONArray whitelist = args.getJSONArray(1);
     immersive = immersive || args.getBoolean(3);
+
+    windowInsetsController = WindowCompat.getInsetsController(activity.getWindow(), activity.getWindow().getDecorView());
 
 
 
