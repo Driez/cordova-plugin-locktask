@@ -36,7 +36,9 @@ public class LockTask extends CordovaPlugin {
     immersive = immersive || args.getBoolean(3);
 
     windowInsetsController = WindowCompat.getInsetsController(activity.getWindow(), activity.getWindow().getDecorView());
-
+    windowInsetsController.setSystemBarsBehavior(
+            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+    );
 
 
 

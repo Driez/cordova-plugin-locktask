@@ -3,12 +3,12 @@ module.exports = {
     if (adminClassName == null) {
       adminClassName = '';
     }
-    if (!whitelist) {
-    whitelist = [];
-    }
+    
+    whitelist = whitelist || [];
+    
     cordova.exec(successCallback, errorCallback, "LockTask", "startLockTask", [adminClassName, whitelist, immersive]);
   },
   stopLockTask: function (successCallback, errorCallback) {
-    cordova.exec(successCallback, errorCallback, "LockTask", "stopLockTask", ['', []]);
+    cordova.exec(successCallback, errorCallback, "LockTask", "stopLockTask", ['', [], false]);
   }
 };
