@@ -21,7 +21,7 @@ public class LockTask extends CordovaPlugin {
   private static final String ACTION_STOP_LOCK_TASK = "stopLockTask";
 
   private Activity activity = null;
-  private WindowInsetsControllerCompat windowInsetsController;
+
 
 
   @Override
@@ -33,11 +33,6 @@ public class LockTask extends CordovaPlugin {
     adminClassName = args.getString(0);
     JSONArray whitelist = args.getJSONArray(1);
     boolean immersive = args.getBoolean(3);
-
-    windowInsetsController = WindowCompat.getInsetsController(activity.getWindow(), activity.getWindow().getDecorView());
-    windowInsetsController.setSystemBarsBehavior(
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-    );
 
 
 
@@ -62,9 +57,6 @@ public class LockTask extends CordovaPlugin {
             }
 
           }
-          if (immersive) {
-            windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
-          }
           activity.startLockTask();
         }
 
@@ -76,7 +68,6 @@ public class LockTask extends CordovaPlugin {
 
         if (activityManager.isInLockTaskMode()) {
           activity.stopLockTask();
-          windowInsetsController.show(WindowInsetsCompat.Type.systemBars());
         }
 
         callbackContext.success();
